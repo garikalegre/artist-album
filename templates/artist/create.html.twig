@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Albums{% endblock %}
+
+{% block body %}
+<section class="contaiter">
+    <h1 class="lead">Create artist</h1>
+    {{ form_start(form, {'attr': {'id': 'create-artist'}}) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+</section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('#create-artist').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    method:'POST',
+                    url: '{{path("artist.create")}}',
+                    data: $('#create-artist').serialize(),
+                });
+            });
+        });
+    </script>
+{% endblock %}

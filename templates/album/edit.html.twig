@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Albums{% endblock %}
+
+{% block body %}
+    <section class="contaiter">
+        <h1 class="lead">Edit album</h1>
+        {{ form_start(form, {'attr': {'id': 'edit-album'}}) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('#edit-album').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    method:'PUT',
+                    url: '{{path('album.edit', {id:  app.request.get('id') })}}',
+                    data: $('#edit-album').serialize(),
+                });
+            });
+        });
+    </script>
+{% endblock %}

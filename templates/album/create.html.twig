@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Albums{% endblock %}
+
+{% block body %}
+<section class="contaiter">
+    <h1 class="lead">Create album</h1>
+    {{ form_start(form, {'attr': {'id': 'create-album'}}) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+</section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('#create-album').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    method:'POST',
+                    url: '{{path("album.create")}}',
+                    data: $('#create-album').serialize(),
+                });
+            });
+        });
+    </script>
+{% endblock %}

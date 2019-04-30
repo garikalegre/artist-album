@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Albums{% endblock %}
+
+{% block body %}
+<section class="contaiter">
+<ul class="list-unstyled">
+    <li>{{ album.name }}</li>
+    <li>{{ album.description }}</li>
+    <li>{{ album.artist.first_name }}</li>
+    <li>{{ album.artist.last_name }}</li>
+</ul>
+</section>
+{% endblock %}
