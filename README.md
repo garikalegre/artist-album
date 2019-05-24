@@ -1,1 +1,1 @@
-# artist-albums
+# artist-albums-symfony
